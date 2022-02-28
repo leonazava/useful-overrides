@@ -27,7 +27,6 @@ export class CheckoutStepsComponent extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.activeStepIndex === this.state.activeStepIndex) return
         this.handleStepChange();
     }
 
@@ -36,15 +35,13 @@ export class CheckoutStepsComponent extends PureComponent {
     }
 
     isActive(i) {
-        const { activeStepIndex } = this.state;
-        if (i === activeStepIndex) {
+        if (i === this.state.activeStepIndex) {
             return 'active';
         }
-        if (i < activeStepIndex) {
+        else if (i < this.state.activeStepIndex) {
             return 'passed';
         }
-
-        return '';
+        else return ''
     }
 
     getStepTitle(i) {
@@ -62,7 +59,7 @@ export class CheckoutStepsComponent extends PureComponent {
                         <div className="step-filler" />
                         <div className="step-checkpoint">
                             <div className="step-index">
-                                <h1>{ this.isActive(i) ? '✅' : i + 1 }</h1>
+                                <h1>{ this.isActive(i) === 'passed' ? '✅' : i + 1 }</h1>
                             </div>
                                 <h2>{ this.getStepTitle(i) }</h2>
                         </div>
