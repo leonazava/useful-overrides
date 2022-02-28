@@ -22,10 +22,6 @@ export class CheckoutStepsComponent extends PureComponent {
         this.handleStepChange = this.handleStepChange.bind(this);
     }
 
-    componentDidMount() {
-        this.handleStepChange();
-    }
-
     componentDidUpdate(prevProps, prevState) {
         this.handleStepChange();
     }
