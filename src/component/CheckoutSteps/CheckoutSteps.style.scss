@@ -1,0 +1,105 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+ .Checkout-Steps {
+    background: var(--breadcrumbs-background);
+    max-width: 100vw;
+    min-height: 100px;
+    overflow: hidden;
+    display: flex;
+    gap: 1rem;
+    .step {
+        min-height: 100px;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        h2 {
+        color: #9C9C9C;
+        text-transform: none;
+        }
+    }
+    .step-index, .step-filler {
+        position: relative;
+        background-color: #DBDBDB;
+        color: #9C9C9C;
+        transition: .2s;
+        overflow: hidden;
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            display: block;
+            min-width: 100%;
+            min-height: 100%;
+            background-color: var(--primary-base-color);
+            transform: translateX(-110%);
+        }
+    }
+    .active, .passed {
+        h2 {
+            color: black;
+        }
+    }
+    .active .step-index::before, .passed .step-index::before {
+
+            transform: translateX(0);
+            transition: .5s;
+            transition-delay: .6s;
+    }
+    .active .step-filler::before, .passed .step-filler::before {
+
+            transform: translateX(0);
+            transition: .7s;
+            transition-delay: 0s;
+    }
+    .step-checkpoint {
+        position: relative;
+        min-width: 35px;
+        min-height: 35px;
+        h2 {
+            position: absolute;
+            font-size: 14px;
+            font-weight: bold;
+            bottom: -110%;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    .step-index {
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    .step-filler {
+        flex-grow: 1;
+        min-height: 5px;
+        border-radius: 5px;
+    }
+    .step:first-child .step-filler {
+        border-radius: 0 5px 5px 0;
+    }
+
+    .step:last-child .step-filler {
+        border-radius: 5px 0 0 5px;
+    }
+    .step:last-child .step-checkpoint  {
+        display: none;
+    }
+ }
